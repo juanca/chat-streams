@@ -9,6 +9,7 @@
   "author": "Juan Carlos Medina",
   "license": "UNLICENSED",
   "dependencies": {
-    "webpack": "^4.19.1"
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0"
   }
 }
