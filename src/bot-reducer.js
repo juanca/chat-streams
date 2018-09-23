@@ -15,8 +15,8 @@ module.exports = function botReducer(state = initialState, action) {
       port: state.port,
       reason: action.payload.address,
     });
-    case  'MESSAGE': return Object.assign({}, state, {
-      message: state.messages.concat(action.payload),
+    case 'MESSAGE': return Object.assign({}, state, {
+      messages: state.messages.concat(action.payload),
     });
     default: return state;
   }
