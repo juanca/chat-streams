@@ -19,6 +19,6 @@ element.id = 'root';
 window.document.body.appendChild(element);
 
 ReactDOM.render(
-  React.createElement('h1', undefined, 'Chat streams!'),
+  <h1>Chat streams!</h1>,
   element
 );
