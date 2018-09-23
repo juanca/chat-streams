@@ -2,7 +2,7 @@ import botReducer from './bot-reducer.js';
 import { createStore } from 'redux';
 import tmi from 'tmi.js';
 
-module.exports = class Bot {
+export default class Bot {
   constructor(options) {
     let client = new tmi.Client(options);
 

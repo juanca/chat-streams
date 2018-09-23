@@ -4,7 +4,7 @@ const initialState = {
   messages: []
 };
 
-module.exports = function botReducer(state = initialState, action) {
+export default function botReducer(state = initialState, action) {
   switch(action.type) {
     case 'CONNECTED': return Object.assign({}, initialState, {
       address: action.payload.address,
