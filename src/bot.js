@@ -1,6 +1,6 @@
-const botReducer = require('./bot-reducer.js');
-const createStore = require('redux').createStore;
-const tmi = require('tmi.js');
+import botReducer from './bot-reducer.js';
+import { createStore } from 'redux';
+import tmi from 'tmi.js';
 
 module.exports = class Bot {
   constructor(options) {

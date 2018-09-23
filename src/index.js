@@ -1,6 +1,6 @@
-const Bot = require('./bot.js');
-const React = require('react');
-const ReactDOM = require('react-dom');
+import Bot from './bot.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 let options = {
   identity: {
