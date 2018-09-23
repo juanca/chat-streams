@@ -1,3 +1,4 @@
+const botReducer = require('./bot-reducer.js');
 const createStore = require('redux').createStore;
 const tmi = require('tmi.js');
 
@@ -8,7 +9,7 @@ module.exports = class Bot {
     this.onConnectedHandler = this.onConnectedHandler.bind(this);
     this.onDisconnectedHandler = this.onDisconnectedHandler.bind(this);
     this.onMessageHandler = this.onMessageHandler.bind(this);
-    this.store = createStore(() => {});
+    this.store = createStore(botReducer);
 
     client.on('connected', this.onConnectedHandler);
     client.on('disconnected', this.onDisconnectedHandler);
