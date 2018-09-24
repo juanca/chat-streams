@@ -10,6 +10,9 @@ export default function TMIMiddleware(store) {
     channels: [
       process.env.TWITCH_CHANNELS,
     ],
+    connection: {
+      secure: true,
+    },
   };
 
   const client = new tmi.Client(options);
