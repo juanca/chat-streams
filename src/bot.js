@@ -1,25 +1,15 @@
-import botReducer from './bot-reducer.js';
-import { createStore } from 'redux';
-import tmi from 'tmi.js';
-
 export default class Bot {
   constructor(options) {
-    let client = new tmi.Client(options);
-
-    this.store = createStore(botReducer);
-    this._stateState = this.store.getState();
+    this.client = options.client;
+    this.store = options.store;
 
     this.onConnectedHandler = this.onConnectedHandler.bind(this);
     this.onDisconnectedHandler = this.onDisconnectedHandler.bind(this);
     this.onMessageHandler = this.onMessageHandler.bind(this);
-    this.onStoreChange = this.onStoreChange.bind(this);
 
-    client.on('connected', this.onConnectedHandler);
-    client.on('disconnected', this.onDisconnectedHandler);
-    client.on('message', this.onMessageHandler);
-
-    this.unsubscribe = this.store.subscribe(this.onStoreChange);
-    client.connect();
+    this.client.on('connected', this.onConnectedHandler);
+    this.client.on('disconnected', this.onDisconnectedHandler);
+    this.client.on('message', this.onMessageHandler);
   }
 
   onConnectedHandler (addr, port) {
@@ -37,8 +27,6 @@ export default class Bot {
       type: 'DISCONNECTED',
       payload: reason,
     });
-
-    this.unsubscribe();
   }
 
   onMessageHandler (target, context, msg, self) {
@@ -52,13 +40,5 @@ export default class Bot {
         target: target,
       },
     });
-  }
-
-  onStoreChange() {
-    const state = this.store.getState();
-
-    if (this._stateState === state) return;
-
-    console.log('Store state change.', state);
   }
 };
