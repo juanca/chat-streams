@@ -10,6 +10,11 @@ function Application(props) {
           {props.status}
         </span>
       </div>
+      <ol>
+        {props.messages.map(message => (console.log('message', message) ||
+          <li>{message.message}</li>
+        ))}
+      </ol>
     </React.Fragment>
   );
 }
@@ -17,6 +22,7 @@ function Application(props) {
 function mapStateToProps(state) {
   return {
     status: state.address && state.port && !state.reason ? 'Connected' : 'Disconnected',
+    messages: state.messages,
   };
 }
 
