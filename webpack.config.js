@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const secrets = require('./secrets.js');
 
 module.exports = {
+  devServer: {
+    https: true,
+  },
   module: {
     rules: [{
       test: /\.js$/,
