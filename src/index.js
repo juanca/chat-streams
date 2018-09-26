@@ -3,6 +3,7 @@ import { applyMiddleware } from 'redux';
 import botReducer from './bot-reducer.js';
 import Bot from './bot.js';
 import { createStore } from 'redux';
+import initialState from './initial-state.js';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,7 +13,12 @@ const element = window.document.createElement('div');
 element.id = 'root';
 window.document.body.appendChild(element);
 
-const store = createStore(botReducer, applyMiddleware(TMIMiddleware));
+const restoredState = Object.assign(initialState, {
+  username: window.localStorage.getItem('username') || '',
+  channels: (window.localStorage.getItem('channels') || '').split(','),
+});
+
+const store = createStore(botReducer, restoredState, applyMiddleware(TMIMiddleware));
 
 ReactDOM.render((
   <Provider store={store}>
