@@ -2,24 +2,30 @@ import Bot from './bot.js';
 import tmi from 'tmi.js';
 
 export default function TMIMiddleware(store) {
-  const options = {
-    identity: {
-      username: process.env.TWITCH_USERNAME,
-      password: process.env.TWITCH_OAUTH_TOKEN,
-    },
-    channels: [
-      process.env.TWITCH_CHANNELS,
-    ],
-    connection: {
-      secure: true,
-    },
-  };
+  const state = store.getState();
+  console.log(state);
 
-  const client = new tmi.Client(options);
-  const bot = new Bot({
-    client: client,
-    store: store,
-  });
+  let client;
+
+  if (state.username && state.channels) {
+    const options = {
+      identity: {
+        username: state.username,
+        password: process.env.TWITCH_OAUTH_TOKEN,
+      },
+      channels: state.channels,
+      connection: {
+        secure: true,
+      },
+    };
+
+    client = new tmi.Client(options);
+
+    const bot = new Bot({
+      client: client,
+      store: store,
+    });
+  }
 
   return function TMIMiddlewareNext(next) {
     return function TMIMiddlewareAction(action) {
