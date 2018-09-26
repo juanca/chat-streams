@@ -1,8 +1,4 @@
-const initialState = {
-  address: '',
-  port: '',
-  messages: []
-};
+import initialState from './initial-state.js';
 
 export default function botReducer(state = initialState, action) {
   switch(action.type) {
