@@ -11,7 +11,7 @@ export default function TMIMiddleware(store) {
     const options = {
       identity: {
         username: state.username,
-        password: process.env.TWITCH_OAUTH_TOKEN,
+        password: state.oAuthToken,
       },
       channels: state.channels,
       connection: {
