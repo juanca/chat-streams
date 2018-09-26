@@ -6,11 +6,11 @@ const initialState = {
 
 export default function botReducer(state = initialState, action) {
   switch(action.type) {
-    case 'CONNECTED': return Object.assign({}, initialState, {
+    case 'CONNECTED': return Object.assign({}, state, {
       address: action.payload.address,
       port: action.payload.port,
     });
-    case 'DISCONNECTED': return Object.assign({}, initialState, {
+    case 'DISCONNECTED': return Object.assign({}, state, {
       address: state.address,
       port: state.port,
       reason: action.payload.address,
