@@ -29,6 +29,7 @@ export default function TMIMiddleware(store) {
       }
 
       const state = next(action);
+      return state;
     };
   };
 };
