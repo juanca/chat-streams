@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './login.css';
 
 function onSubmit(event) {
   event.preventDefault();
@@ -13,19 +14,18 @@ function onSubmit(event) {
   }
 }
 
-
 export default function Login() {
   return (
     <form onSubmit={onSubmit}>
-      <label>
-        Username:
-        <input name="username" type="text" />
-      </label>
-      <label>
-        Channel:
-        <input name="channel" type="text" />
-      </label>
-      <input type="submit" value="Login via Twitch" />
+      <fieldset className={styles.field}>
+        <label className={styles.label} for="username">Username:</label>
+        <input className={styles.input} name="username" id="username" type="text" />
+      </fieldset>
+      <fieldset className={styles.field}>
+        <label className={styles.label} for="username">Channel:</label>
+        <input className={styles.input} name="channel" id="username" type="text" />
+      </fieldset>
+      <input className={styles.button} type="submit" value="Login via Twitch" />
     </form>
   );
 }
