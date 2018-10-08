@@ -1,13 +1,13 @@
-import Application from './application.js';
+import Application from '../application.js';
 import { applyMiddleware } from 'redux';
-import botReducer from './bot-reducer.js';
-import Bot from './bot.js';
+import botReducer from '../bot-reducer.js';
+import Bot from '../bot.js';
 import { createStore } from 'redux';
-import initialState from './initial-state.js';
+import initialState from '../initial-state.js';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TMIMiddleware from './tmi-middleware.js';
+import TMIMiddleware from '../tmi-middleware.js';
 
 const element = window.document.createElement('div');
 element.id = 'root';

@@ -5,7 +5,8 @@ module.exports = {
     https: true,
   },
   entry: {
-    'login': './src/entry/login.js',
+    application: './src/entry/application.js',
+    login: './src/entry/login.js',
   },
   module: {
     rules: [{
@@ -30,7 +31,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      chunks: ['application'],
+      filename: 'application.html'
+    }),
+    new HtmlWebpackPlugin({
       chunks: ['login'],
+      filename: 'login.html'
     }),
   ],
 };
