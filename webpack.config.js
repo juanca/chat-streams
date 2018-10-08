@@ -4,6 +4,9 @@ module.exports = {
   devServer: {
     https: true,
   },
+  entry: {
+    'login': './src/entry/login.js',
+  },
   module: {
     rules: [{
       test: /\.js$/,
@@ -14,6 +17,8 @@ module.exports = {
     }],
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      chunks: ['login'],
+    }),
   ],
 };
